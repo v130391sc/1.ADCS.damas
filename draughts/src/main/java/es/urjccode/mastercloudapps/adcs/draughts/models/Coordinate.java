@@ -7,6 +7,12 @@ public class Coordinate {
     private static final int LOWER_LIMIT = 0;
     private static final int UPPER_LIMIT = 7;
 
+    public Coordinate(String format) {
+        int number = Integer.parseInt(format);
+        this.row = number/10 - 1;
+        this.column = number%10 - 1;
+    }
+
     public Coordinate(int row, int column) {
         this.row = row;
         this.column = column;

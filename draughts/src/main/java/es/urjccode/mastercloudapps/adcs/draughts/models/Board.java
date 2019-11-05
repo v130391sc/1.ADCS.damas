@@ -44,12 +44,21 @@ class Board {
     }
 
     public Color getColor(Coordinate coordinate) {
-        return this.squares[coordinate.getRow()][coordinate.getColumn()].getColor();
+        return this.getPiece(coordinate).getColor();
     }
 
     public Piece getPiece(Coordinate coordinate) {
-        return this.squares[coordinate.getRow()][coordinate.getColumn()].getPiece();
+        return this.getSquare(coordinate).getPiece();
     }
+
+    boolean isEmpty(Coordinate coordinate) {
+        return this.getSquare(coordinate).isEmpty();
+    }
+
+    private Square getSquare(Coordinate coordinate){
+        return this.squares[coordinate.getRow()][coordinate.getColumn()];
+    }
+   
 
     public List<Piece> getPieces(Color color) {
         List<Piece> pieces = new ArrayList<Piece>();
@@ -60,10 +69,6 @@ class Board {
         }
 		return pieces;
 	}
-
-    boolean isEmpty(Coordinate coordinate) {
-        return this.squares[coordinate.getRow()][coordinate.getColumn()].isEmpty();
-    }
     
     public int getDimension() {
 		return Board.DIMENSION;
