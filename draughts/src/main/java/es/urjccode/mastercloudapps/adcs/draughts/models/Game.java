@@ -44,12 +44,38 @@ public class Game {
 			}
 		} while (pair < coordinates.length - 1 && error == null);
 		error = this.isCorrectGlobalMove(error, removedCoordinates, coordinates);
-		if (error == null)
-			this.turn.change();
+		if (error == null){
+            checkRemovePieceIfCanEatAndDontDoIt(coordinates);
+            this.turn.change();
+        }
 		else
 			this.unMovesUntilPair(removedCoordinates, pair, coordinates);
 		return error;
 	}
+
+    private void checkRemovePieceIfCanEatAndDontDoIt(Coordinate[] coordinates){
+        for (Coordinate coordinate : this.getCoordinatesWithActualColor()){
+            boolean remove = false;
+            for (int i = 1; i <= 2; i++){
+                for (Coordinate target : coordinate.getDiagonalCoordinates(i)){
+                    if (this.isCorrectPairMove(0, coordinate, target) == null){
+                        List<Coordinate> betweenCoordinates = coordinate.getBetweenDiagonalCoordinates(target);
+                        if (!betweenCoordinates.isEmpty()){
+                            for (Coordinate coord : betweenCoordinates) {
+                                if (this.getPiece(coord) != null){
+                                        for(int j=0; j<coordinates.length-1;j++) {
+                                            remove = this.getBetweenDiagonalPiece(j, coordinates) == null || !coordinates[j].equals(coord);
+                                        }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if(remove)
+                this.board.remove(coordinate);
+        }
+    }
 
 	private Error isCorrectPairMove(int pair, Coordinate... coordinates) {
 		assert coordinates[pair] != null;
@@ -60,7 +86,7 @@ public class Game {
 			return Error.OPPOSITE_PIECE;
 		if (!this.board.isEmpty(coordinates[pair + 1]))
 			return Error.NOT_EMPTY_TARGET;
-		List<Piece> betweenDiagonalPieces = 
+		List<Piece> betweenDiagonalPieces =
 			this.board.getBetweenDiagonalPieces(coordinates[pair], coordinates[pair + 1]);
 		return this.board.getPiece(coordinates[pair]).isCorrectMovement(betweenDiagonalPieces, pair, coordinates);
 	}

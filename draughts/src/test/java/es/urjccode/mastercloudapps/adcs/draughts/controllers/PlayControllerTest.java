@@ -47,17 +47,17 @@ public class PlayControllerTest {
     @Test
     public void testGivenPlayControllerWhenMoveWithoutMovementsThenIsBlocked() {
         Game game = new GameBuilder().rows(
-            "        ",
-            "        ",
             "   n    ",
             "  b b   ",
             "     b  ",
             "b       ",
             "        ",
+            "        ",
+            "        ",
             "        ").build();
         playController = new PlayController(game, new State());
-        Coordinate origin = new Coordinate(5, 0);
-        Coordinate target = new Coordinate(4, 1);
+        Coordinate origin = new Coordinate(3, 0);
+        Coordinate target = new Coordinate(2, 1);
         playController.move(origin, target);
         assertEquals(playController.getColor(target), Color.WHITE);
         assertTrue(game.isBlocked());
@@ -82,7 +82,7 @@ public class PlayControllerTest {
             "        ",
             "        ",
             " b      ",
-            "        ").build();
+            "        ").color(Color.WHITE).build();
         playController = new PlayController(game, new State());
         Coordinate origin = new Coordinate(6, 1);
         Coordinate target = new Coordinate(5, 0);
@@ -100,7 +100,7 @@ public class PlayControllerTest {
             "        ",
             "  b     ",
             "   N    ",
-            "        ").build();
+            "        ").color(Color.BLACK).build();
         playController = new PlayController(game, new State());
         Coordinate origin = new Coordinate(2, 0);
         Coordinate target = new Coordinate(3, 1);
@@ -118,10 +118,10 @@ public class PlayControllerTest {
             " n      ",
             "b       ",
             "        ",
-            "  b     ").build();
+            "  b     ").color(Color.WHITE).build();
         playController = new PlayController(game, new State());
-        Coordinate origin = new Coordinate(7, 3);
-        Coordinate target = new Coordinate(6, 4);
+        Coordinate origin = new Coordinate(7, 2);
+        Coordinate target = new Coordinate(6, 3);
         playController.move(origin, target);
         assertNull(playController.getPiece(new Coordinate(5, 0)));
     }
@@ -136,7 +136,7 @@ public class PlayControllerTest {
             "        ",
             "        ",
             "        ",
-            "        ").build();
+            "        ").color(Color.BLACK).build();
         playController = new PlayController(game, new State());
         Coordinate origin = new Coordinate(0, 1);
         Coordinate target = new Coordinate(1, 0);
@@ -174,8 +174,8 @@ public class PlayControllerTest {
             "        ",
             "        ").build();
         playController = new PlayController(game, new State());
-        Coordinate origin = new Coordinate(0, 2);
-        Coordinate target = new Coordinate(1, 1);
+        Coordinate origin = new Coordinate(0, 1);
+        Coordinate target = new Coordinate(1, 0);
         playController.move(origin, target);
         assertNull(playController.getPiece(target));
     }
