@@ -1,8 +1,5 @@
 package es.urjccode.mastercloudapps.adcs.dobles.injectMocks;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -10,6 +7,10 @@ import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SUTTest {

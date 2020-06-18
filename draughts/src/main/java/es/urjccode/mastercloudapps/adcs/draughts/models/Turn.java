@@ -42,9 +42,7 @@ class Turn {
     if (getClass() != obj.getClass())
       return false;
     Turn other = (Turn) obj;
-    if (color != other.color)
-      return false;
-    return true;
+      return color == other.color;
   }
 
 }

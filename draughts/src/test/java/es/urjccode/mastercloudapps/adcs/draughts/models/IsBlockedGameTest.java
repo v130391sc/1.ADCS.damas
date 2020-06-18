@@ -1,9 +1,9 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class IsBlockedGameTest extends GameTest {
 
@@ -104,5 +104,5 @@ public class IsBlockedGameTest extends GameTest {
             "        ");
         assertFalse(this.game.isBlocked());
     }
-    
+
 }

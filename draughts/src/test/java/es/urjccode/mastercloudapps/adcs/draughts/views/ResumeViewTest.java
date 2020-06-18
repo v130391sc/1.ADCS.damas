@@ -1,9 +1,7 @@
 package es.urjccode.mastercloudapps.adcs.draughts.views;
 
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
+import es.urjccode.mastercloudapps.adcs.draughts.controllers.ResumeController;
+import es.urjccode.mastercloudapps.adcs.draughts.utils.YesNoDialog;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +10,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import es.urjccode.mastercloudapps.adcs.draughts.controllers.ResumeController;
-import es.urjccode.mastercloudapps.adcs.draughts.utils.YesNoDialog;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ResumeViewTest {
@@ -29,7 +28,7 @@ public class ResumeViewTest {
     public void initMocks() {
         MockitoAnnotations.initMocks(this);
     }
-    
+
     @Test
     public void testGivenResumeViewWhenAnswerYesThenReset(){
         when(yesNoDialog.read(anyString())).thenReturn(true);

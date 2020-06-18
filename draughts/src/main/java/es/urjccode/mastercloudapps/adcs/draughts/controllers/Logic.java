@@ -1,11 +1,11 @@
 package es.urjccode.mastercloudapps.adcs.draughts.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import es.urjccode.mastercloudapps.adcs.draughts.models.Game;
 import es.urjccode.mastercloudapps.adcs.draughts.models.State;
 import es.urjccode.mastercloudapps.adcs.draughts.models.StateValue;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Logic {
 

@@ -1,29 +1,23 @@
 package es.urjccode.mastercloudapps.adcs.draughts.views;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import es.urjccode.mastercloudapps.adcs.draughts.controllers.StartController;
+import es.urjccode.mastercloudapps.adcs.draughts.models.Game;
+import es.urjccode.mastercloudapps.adcs.draughts.models.GameBuilder;
+import es.urjccode.mastercloudapps.adcs.draughts.models.State;
+import es.urjccode.mastercloudapps.adcs.draughts.utils.Console;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.*;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
-
-import es.urjccode.mastercloudapps.adcs.draughts.controllers.StartController;
-import es.urjccode.mastercloudapps.adcs.draughts.models.Coordinate;
-import es.urjccode.mastercloudapps.adcs.draughts.models.Game;
-import es.urjccode.mastercloudapps.adcs.draughts.models.GameBuilder;
-import es.urjccode.mastercloudapps.adcs.draughts.models.State;
-import es.urjccode.mastercloudapps.adcs.draughts.utils.Console;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GameViewTest {

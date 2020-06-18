@@ -1,12 +1,7 @@
 package es.urjccode.mastercloudapps.adcs.draughts.controllers;
 
+import es.urjccode.mastercloudapps.adcs.draughts.models.*;
 import org.junit.Test;
-
-import es.urjccode.mastercloudapps.adcs.draughts.models.Coordinate;
-import es.urjccode.mastercloudapps.adcs.draughts.models.Game;
-import es.urjccode.mastercloudapps.adcs.draughts.models.State;
-import es.urjccode.mastercloudapps.adcs.draughts.models.Color;
-import es.urjccode.mastercloudapps.adcs.draughts.models.GameBuilder;
 
 import static org.junit.Assert.*;
 

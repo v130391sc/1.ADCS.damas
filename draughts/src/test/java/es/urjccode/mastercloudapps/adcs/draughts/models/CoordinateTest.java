@@ -1,14 +1,12 @@
 package es.urjccode.mastercloudapps.adcs.draughts.models;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class CoordinateTest {
 
@@ -29,7 +27,7 @@ public class CoordinateTest {
         assertTrue(new Coordinate(3,4).isOnDiagonal(new Coordinate(2,5)));
         assertTrue(new Coordinate(3,4).isOnDiagonal(new Coordinate(2,3)));
         assertTrue(new Coordinate(3,4).isOnDiagonal(new Coordinate(4,3)));
-        
+
     }
 
     @Test
@@ -38,7 +36,7 @@ public class CoordinateTest {
         assertFalse(new Coordinate(3,5).isOnDiagonal(new Coordinate(4,5)));
         assertFalse(new Coordinate(3,5).isOnDiagonal(new Coordinate(3,6)));
         assertFalse(new Coordinate(3,5).isOnDiagonal(new Coordinate(2,5)));
-        assertFalse(new Coordinate(3,5).isOnDiagonal(new Coordinate(3,4)));     
+        assertFalse(new Coordinate(3,5).isOnDiagonal(new Coordinate(3,4)));
     }
 
 
@@ -59,61 +57,49 @@ public class CoordinateTest {
     @Test
     public void testGivenCoordinateWhenGetDiagonalCoordinatesWithOneDistanceThenAll(){
         Coordinate coordinate = new Coordinate(4,3);
-        List<Coordinate> diagonalCoordinates = Arrays.asList(new Coordinate[]{
-            new Coordinate(5,4),
+        List<Coordinate> diagonalCoordinates = Arrays.asList(new Coordinate(5,4),
             new Coordinate(3,4),
             new Coordinate(3,2),
-            new Coordinate(5,2)
-        });
+            new Coordinate(5,2));
         assertEquals(diagonalCoordinates, coordinate.getDiagonalCoordinates(1));
     }
 
     @Test
     public void testGivenCoordinateWhenGetDiagonalCoordinatesWithTwoDistanceThenAll(){
         Coordinate coordinate = new Coordinate(4,3);
-        List<Coordinate> diagonalCoordinates = Arrays.asList(new Coordinate[]{
-            new Coordinate(6,5),
+        List<Coordinate> diagonalCoordinates = Arrays.asList(new Coordinate(6,5),
             new Coordinate(2,5),
             new Coordinate(2,1),
-            new Coordinate(6,1)
-        });
+            new Coordinate(6,1));
         assertEquals(diagonalCoordinates, coordinate.getDiagonalCoordinates(2));
     }
 
     @Test
     public void testGivenCoordinateWhenGetDiagonalCoordinatesWithOneDistanceThenAny(){
         Coordinate coordinate = new Coordinate(0,1);
-        List<Coordinate> diagonalCoordinates = Arrays.asList(new Coordinate[]{
-            new Coordinate(1,2),
-            new Coordinate(1,0),
-        });
+        List<Coordinate> diagonalCoordinates = Arrays.asList(new Coordinate(1,2),
+            new Coordinate(1,0));
         assertEquals(diagonalCoordinates, coordinate.getDiagonalCoordinates(1));
     }
 
     @Test
     public void testGivenCoordinateWhenGetDiagonalCoordinatesWithTwoDistanceThenAny(){
         Coordinate coordinate = new Coordinate(0,1);
-        List<Coordinate> diagonalCoordinates = Arrays.asList(new Coordinate[]{
-            new Coordinate(2,3)
-        });
+        List<Coordinate> diagonalCoordinates = Arrays.asList(new Coordinate(2,3));
         assertEquals(diagonalCoordinates, coordinate.getDiagonalCoordinates(2));
     }
 
     @Test
     public void testGivenCoordinateWhenGetDiagonalCoordinatesWithOneDistanceThenAnyAgain(){
         Coordinate coordinate = new Coordinate(7,0);
-        List<Coordinate> shiftedCoordinates = Arrays.asList(new Coordinate[]{
-            new Coordinate(6,1),
-        });
+        List<Coordinate> shiftedCoordinates = Arrays.asList(new Coordinate(6,1));
         assertEquals(shiftedCoordinates, coordinate.getDiagonalCoordinates(1));
     }
 
     @Test
     public void testGivenCoordinateWhenGetDiagonalCoordinatesWithTwoDistanceThenAnyAgain(){
         Coordinate coordinate = new Coordinate(7,0);
-        List<Coordinate> shiftedCoordinates = Arrays.asList(new Coordinate[]{
-            new Coordinate(5,2),
-        });
+        List<Coordinate> shiftedCoordinates = Arrays.asList(new Coordinate(5,2));
         assertEquals(shiftedCoordinates, coordinate.getDiagonalCoordinates(2));
     }
 
