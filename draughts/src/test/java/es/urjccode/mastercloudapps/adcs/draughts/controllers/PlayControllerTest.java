@@ -144,4 +144,40 @@ public class PlayControllerTest {
         assertNull(playController.getPiece(new Coordinate(2, 7)));
     }
 
+    @Test
+    public void testGivenPlayControllerWhenDraughtWhoMoveDoesntEatThenIsRemoved() {
+        Game game = new GameBuilder().rows(
+            "  B     ",
+            "        ",
+            "    n   ",
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "        ").build();
+        playController = new PlayController(game, new State());
+        Coordinate origin = new Coordinate(0, 3);
+        Coordinate target = new Coordinate(3, 0);
+        playController.move(origin, target);
+        assertNull(playController.getPiece(target));
+    }
+
+    @Test
+    public void testGivenPlayControllerWhenPieceWhoMoveDoesntEatThenIsRemoved() {
+        Game game = new GameBuilder().rows(
+            " n      ",
+            "  b     ",
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "        ").build();
+        playController = new PlayController(game, new State());
+        Coordinate origin = new Coordinate(0, 2);
+        Coordinate target = new Coordinate(1, 1);
+        playController.move(origin, target);
+        assertNull(playController.getPiece(target));
+    }
+
 }
