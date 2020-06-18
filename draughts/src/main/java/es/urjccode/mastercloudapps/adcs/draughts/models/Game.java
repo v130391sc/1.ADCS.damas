@@ -45,7 +45,7 @@ public class Game {
 		} while (pair < coordinates.length - 1 && error == null);
 		error = this.isCorrectGlobalMove(error, removedCoordinates, coordinates);
 		if (error == null){
-            checkRemovePieceIfCanEatAndDontDoIt(coordinates);
+            checkRemoveIfActualColorPiecesCanEatAndDontDoIt(coordinates);
             this.turn.change();
         }
 		else
@@ -53,31 +53,34 @@ public class Game {
 		return error;
 	}
 
-    private void checkRemovePieceIfCanEatAndDontDoIt(Coordinate[] coordinates){
+    private void checkRemoveIfActualColorPiecesCanEatAndDontDoIt(Coordinate[] coordinates){
         for (Coordinate coordinate : this.getCoordinatesWithActualColor()){
-            boolean remove = false;
-            for (int i = 1; i <= 2; i++){
-                for (Coordinate target : coordinate.getDiagonalCoordinates(i)){
-                    if (this.isCorrectPairMove(0, coordinate, target) == null){
-                        List<Coordinate> betweenCoordinates = coordinate.getBetweenDiagonalCoordinates(target);
-                        if (!betweenCoordinates.isEmpty()){
-                            for (Coordinate coord : betweenCoordinates) {
-                                if (this.getPiece(coord) != null){
-                                        for(int j=0; j<coordinates.length-1;j++) {
-                                            remove = this.getBetweenDiagonalPiece(j, coordinates) == null || !coordinates[j].equals(coord);
-                                        }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if(remove)
+            if(isAnyColorPieceCanEatAndDontDoIt(coordinates, coordinate)){
                 this.board.remove(coordinate);
+            }
         }
     }
 
-	private Error isCorrectPairMove(int pair, Coordinate... coordinates) {
+    private boolean isAnyColorPieceCanEatAndDontDoIt(Coordinate[] coordinates, Coordinate coordinate) {
+	    boolean result = false;
+        for (int i = 1; i <= 2; i++){
+            for (Coordinate target : coordinate.getDiagonalCoordinates(i)){
+                if (this.isCorrectPairMove(0, coordinate, target) == null) {
+                    List<Coordinate> betweenCoordinates = coordinate.getBetweenDiagonalCoordinates(target);
+                        for (Coordinate coord : betweenCoordinates) {
+                            if (this.getPiece(coord) != null) {
+                                for (int j = 0; j < coordinates.length - 1; j++) {
+                                    result = this.getBetweenDiagonalPiece(j, coordinates) == null || !coordinates[j].equals(coord);
+                                }
+                            }
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private Error isCorrectPairMove(int pair, Coordinate... coordinates) {
 		assert coordinates[pair] != null;
 		assert coordinates[pair + 1] != null;
 		if (board.isEmpty(coordinates[pair]))
