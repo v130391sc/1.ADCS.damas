@@ -69,9 +69,7 @@ public abstract class Piece {
 		if (getClass() != obj.getClass())
 			return false;
 		Piece other = (Piece) obj;
-		if (color != other.color)
-			return false;
-		return true;
-	}
+        return color == other.color;
+    }
 
 }

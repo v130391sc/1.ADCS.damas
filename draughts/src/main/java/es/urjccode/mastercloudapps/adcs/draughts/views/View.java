@@ -1,10 +1,6 @@
 package es.urjccode.mastercloudapps.adcs.draughts.views;
 
-import es.urjccode.mastercloudapps.adcs.draughts.controllers.InteractorController;
-import es.urjccode.mastercloudapps.adcs.draughts.controllers.InteractorControllersVisitor;
-import es.urjccode.mastercloudapps.adcs.draughts.controllers.PlayController;
-import es.urjccode.mastercloudapps.adcs.draughts.controllers.ResumeController;
-import es.urjccode.mastercloudapps.adcs.draughts.controllers.StartController;
+import es.urjccode.mastercloudapps.adcs.draughts.controllers.*;
 
 public class View implements InteractorControllersVisitor {
 

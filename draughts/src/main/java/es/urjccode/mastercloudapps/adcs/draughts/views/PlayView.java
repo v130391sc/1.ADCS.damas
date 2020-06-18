@@ -1,16 +1,16 @@
 package es.urjccode.mastercloudapps.adcs.draughts.views;
 
+import es.urjccode.mastercloudapps.adcs.draughts.controllers.PlayController;
+import es.urjccode.mastercloudapps.adcs.draughts.models.Color;
+import es.urjccode.mastercloudapps.adcs.draughts.models.Coordinate;
+import es.urjccode.mastercloudapps.adcs.draughts.models.Error;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import es.urjccode.mastercloudapps.adcs.draughts.controllers.PlayController;
-import es.urjccode.mastercloudapps.adcs.draughts.models.Error;
-import es.urjccode.mastercloudapps.adcs.draughts.models.Color;
-import es.urjccode.mastercloudapps.adcs.draughts.models.Coordinate;
-
 class PlayView extends SubView {
-    
+
     private static final String COLOR_PARAM = "#color";
     private static final String[] COLOR_VALUES = { "blancas", "negras" };
     private static final String PROMPT = "Mueven las " + PlayView.COLOR_PARAM + ": ";
@@ -66,9 +66,9 @@ class PlayView extends SubView {
         List<Coordinate> coordinateList = new ArrayList<Coordinate>();
         while (string.length() > 0){
             coordinateList.add(Coordinate.getInstance(string.substring(0, 2)));
-            string = string.substring(2, string.length());
+            string = string.substring(2);
             if (string.length() > 0 && string.charAt(0) == '.')
-                string = string.substring(1, string.length());
+                string = string.substring(1);
         }
         Coordinate[] coordinates = new Coordinate[coordinateList.size()];
         for(int i=0; i< coordinates.length; i++){

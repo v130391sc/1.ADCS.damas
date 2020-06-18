@@ -1,12 +1,13 @@
 package es.urjccode.mastercloudapps.adcs.dobles.initMocks;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class SUTTest {
 
