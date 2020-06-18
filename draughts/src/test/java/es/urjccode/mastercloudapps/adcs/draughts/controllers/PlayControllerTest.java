@@ -73,42 +73,6 @@ public class PlayControllerTest {
     }
 
     @Test
-    public void testGivenPlayControllerWhenWhiteDraughtDoesntEatThenIsRemoved() {
-        Game game = new GameBuilder().rows(
-            "        ",
-            "    B   ",
-            "     n  ",
-            "        ",
-            "        ",
-            "        ",
-            " b      ",
-            "        ").color(Color.WHITE).build();
-        playController = new PlayController(game, new State());
-        Coordinate origin = new Coordinate(6, 1);
-        Coordinate target = new Coordinate(5, 0);
-        playController.move(origin, target);
-        assertNull(playController.getPiece(new Coordinate(1, 4)));
-    }
-
-    @Test
-    public void testGivenPlayControllerWhenBlackDraughtDoesntEatThenIsRemoved() {
-        Game game = new GameBuilder().rows(
-            "        ",
-            "        ",
-            "n       ",
-            "        ",
-            "        ",
-            "  b     ",
-            "   N    ",
-            "        ").color(Color.BLACK).build();
-        playController = new PlayController(game, new State());
-        Coordinate origin = new Coordinate(2, 0);
-        Coordinate target = new Coordinate(3, 1);
-        playController.move(origin, target);
-        assertNull(playController.getPiece(new Coordinate(6, 3)));
-    }
-
-    @Test
     public void testGivenPlayControllerWhenWhitePieceDoesntEatThenIsRemoved() {
         Game game = new GameBuilder().rows(
             "        ",
@@ -142,24 +106,6 @@ public class PlayControllerTest {
         Coordinate target = new Coordinate(1, 0);
         playController.move(origin, target);
         assertNull(playController.getPiece(new Coordinate(2, 7)));
-    }
-
-    @Test
-    public void testGivenPlayControllerWhenDraughtWhoMoveDoesntEatThenIsRemoved() {
-        Game game = new GameBuilder().rows(
-            "  B     ",
-            "        ",
-            "    n   ",
-            "        ",
-            "        ",
-            "        ",
-            "        ",
-            "        ").build();
-        playController = new PlayController(game, new State());
-        Coordinate origin = new Coordinate(0, 3);
-        Coordinate target = new Coordinate(3, 0);
-        playController.move(origin, target);
-        assertNull(playController.getPiece(target));
     }
 
     @Test
