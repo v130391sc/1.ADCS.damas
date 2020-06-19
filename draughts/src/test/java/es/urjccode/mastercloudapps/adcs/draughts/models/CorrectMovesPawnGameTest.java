@@ -213,7 +213,8 @@ public class CorrectMovesPawnGameTest extends GameTest {
             new Coordinate(2, 1),
             new Coordinate(4, 3),
             new Coordinate(6, 5));
-        assertEquals(3, this.game.getScore(Color.BLACK));
+        Score score = this.game.getScore(Color.BLACK);
+        assertEquals(new Integer(6),score.getScore());
     }
 
 }
