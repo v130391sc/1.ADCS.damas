@@ -7,11 +7,15 @@ public class Game {
 
 	private Board board;
 	private Turn turn;
+	private Score blackScore;
+	private Score whiteScore;
 
 	Game(Board board) {
 		this.turn = new Turn();
 		this.board = board;
-	}
+		this.blackScore = new Score(Color.BLACK);
+		this.whiteScore = new Score(Color.WHITE);
+    }
 
 	public Game() {
 		this(new Board());
@@ -99,9 +103,34 @@ public class Game {
 		if (forRemoving != null) {
 			removedCoordinates.add(0, forRemoving);
 			this.board.remove(forRemoving);
+			if(getTurnColor().equals(Color.WHITE)){
+			    if(coordinates.length == 2)
+                    this.whiteScore.setScore(this.whiteScore.getScore()+1);
+                if(coordinates.length == 3)
+                    this.whiteScore.setScore(this.whiteScore.getScore()+3);
+                if(coordinates.length == 4)
+                    this.whiteScore.setScore(this.whiteScore.getScore()+6);
+            } else if(getTurnColor().equals(Color.BLACK)){
+                if(coordinates.length == 2)
+                    this.blackScore.setScore(this.blackScore.getScore()+1);
+                if(coordinates.length == 3)
+                    this.blackScore.setScore(this.blackScore.getScore()+3);
+                if(coordinates.length == 4)
+                    this.blackScore.setScore(this.blackScore.getScore()+6);
+            }
 		}
 		this.board.move(coordinates[pair], coordinates[pair + 1]);
 	}
+
+	public Score getScore(Color color){
+	    if(color.equals(Color.WHITE)){
+	        return this.whiteScore;
+        } else if(color.equals(Color.BLACK)) {
+	        return this.blackScore;
+        } else {
+	        return null;
+        }
+    }
 
 	private Coordinate getBetweenDiagonalPiece(int pair, Coordinate... coordinates) {
 		assert coordinates[pair].isOnDiagonal(coordinates[pair + 1]);
