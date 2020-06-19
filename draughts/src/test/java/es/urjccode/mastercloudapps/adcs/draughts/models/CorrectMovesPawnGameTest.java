@@ -2,8 +2,7 @@ package es.urjccode.mastercloudapps.adcs.draughts.models;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class CorrectMovesPawnGameTest extends GameTest {
 
@@ -161,6 +160,59 @@ public class CorrectMovesPawnGameTest extends GameTest {
             new Coordinate(2, 1),
             new Coordinate(4, 3),
             new Coordinate(6, 5));
+    }
+
+    @Test
+    public void testGivenGameWhenEatAPieceThenCorrectScore() {
+        this.setGame(Color.BLACK,
+            "        ",
+            "        ",
+            "        ",
+            "n       ",
+            " b      ",
+            "        ",
+            "        ",
+            "        ");
+        this.setExpectedGame(Color.WHITE,
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "  n     ",
+            "        ",
+            "        ");
+        this.assertMove(
+            new Coordinate(3, 0),
+            new Coordinate(5, 2));
+        assertEquals(1, this.game.getScore(Color.BLACK));
+    }
+
+    @Test
+    public void testGivenGameWhenEatTwoPieceThenCorrectScore() {
+        this.setGame(Color.BLACK,
+            "        ",
+            "        ",
+            " n      ",
+            "  b     ",
+            "        ",
+            "    b   ",
+            "        ",
+            "        ");
+        this.setExpectedGame(Color.WHITE,
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "        ",
+            "     n  ",
+            "        ");
+        this.assertMove(
+            new Coordinate(2, 1),
+            new Coordinate(4, 3),
+            new Coordinate(6, 5));
+        assertEquals(3, this.game.getScore(Color.BLACK));
     }
 
 }
